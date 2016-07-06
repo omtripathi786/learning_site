@@ -18,6 +18,7 @@ from django.contrib import admin
 from .import views
 
 urlpatterns = [
-    url(r'^$', views.test),
+    url(r'^$', views.hello_world),
+    url(r'^courses/', include('courses.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
