@@ -1,10 +1,10 @@
-__author__ = 'om'
+from django.conf.urls import url
 
-from django.conf.urls import include, url
-from django.contrib import admin
-from .import views
+from . import views
 
 urlpatterns = [
-    url(r'^$', views.course_list),
-    url(r'(?P<pk>\d+)/$', views.course_detail),
+    url(r'^$', views.course_list, name='list'),
+    url(r'(?P<course_pk>\d+)/(?P<step_pk>\d+)/$', views.step_detail,
+        name='step'),
+    url(r'(?P<pk>\d+)/$', views.course_detail, name='detail'),
 ]
