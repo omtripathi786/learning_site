@@ -1,11 +1,9 @@
-__author__ = 'om'
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.http import HttpResponse
-
 from django.shortcuts import render
+
 from . import forms
 
 
@@ -22,17 +20,9 @@ def suggestion_view(request):
                 'Suggestion from {}'.format(form.cleaned_data['name']),
                 form.cleaned_data['suggestion'],
                 '{name} <{email}>'.format(**form.cleaned_data),
-                ['omtripathi88@gmail.com']
+                ['kenneth@teamtreehouse.com']
             )
-            messages.add_message(request, messages.SUCCESS, 'Thanks for your suggestion!')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Thanks for your suggestion!')
             return HttpResponseRedirect(reverse('suggestion'))
-        else:
-            print('bad form')
     return render(request, 'suggestion_form.html', {'form': form})
-
-
-
-
-
-
-

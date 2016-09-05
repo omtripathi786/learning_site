@@ -36,7 +36,7 @@ class Text(Step):
 
 
 class Quiz(Step):
-    content = models.IntegerField(default=4)
+    total_questions = models.IntegerField(default=4)
 
     class Meta:
         verbose_name_plural = "Quizzes"
@@ -54,7 +54,7 @@ class Question(models.Model):
     prompt = models.TextField()
 
     class Meta:
-        ordering = ['order', ]
+        ordering = ['order',]
 
     def get_absolute_url(self):
         return self.quiz.get_absolute_url()
